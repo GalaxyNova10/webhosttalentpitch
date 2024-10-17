@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Football News</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="news1.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Latest Indian Football News</h1>
+        <!-- News Articles Section -->
+        <div class="news-container" id="news-container">
+            <!-- News articles will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        © 2024 Indian Football News. All Rights Reserved.
+    </footer>
+
+    <script>
+        const API_KEY = 'c8050fe12a184ebd900971983bfb6fc4';
+        const NEWS_API_URL = `https://newsapi.org/v2/everything?q="Indian football"&apiKey=${API_KEY}`;
+        async function fetchNews() {
+            try {
+                const response = await fetch(NEWS_API_URL);
+                const data = await response.json();
+                displayNews(data.articles);
+            } catch (error) {
+                console.error("Error fetching news:", error);
+            }
+        }
+
+        function displayNews(articles) {
+            const newsContainer = document.getElementById('news-container');
+            newsContainer.innerHTML = ''; // Clear the container
+
+            articles.forEach(article => {
+                const newsArticle = document.createElement('div');
+                newsArticle.classList.add('news-article');
+
+                // Create the image element
+                const img = document.createElement('img');
+                img.src = article.urlToImage || 'https://via.placeholder.com/300x200';
+                img.alt = article.title;
+
+                // Create the headline
+                const headline = document.createElement('h2');
+                headline.textContent = article.title;
+
+                // Create the description
+                const description = document.createElement('p');
+                description.textContent = article.description || 'Click below for full details';
+
+                // Create the 'Read More' link
+                const readMore = document.createElement('a');
+                readMore.href = article.url;
+                readMore.textContent = 'Read More';
+                readMore.target = '_blank'; // Opens in a new tab
+
+                // Append elements to the news article
+                newsArticle.appendChild(img);
+                newsArticle.appendChild(headline);
+                newsArticle.appendChild(description);
+                newsArticle.appendChild(readMore);
+
+                // Append the news article to the container
+                newsContainer.appendChild(newsArticle);
+            });
+        }
+
+        // Fetch news when the page loads
+        window.onload = fetchNews;
+    </script>
+
+</body>
+</html>

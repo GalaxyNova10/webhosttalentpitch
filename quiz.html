@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Contest</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-image: url('fbg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Arial', sans-serif;
+            background-color: #0b0e31;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .quiz-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: rgb(255, 255, 255);
+            background-color: #0c0c0cb7;
+            display: inline-block;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .quiz-box {
+            background-color: #fcfcfcd3;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .question {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: rgb(0, 0, 0);
+        }
+
+        .answers {
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        .option {
+            background-color: #925287;
+            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .option:hover {
+            background-color: #7e53d4;
+            transform: translateY(-2px);
+        }
+
+        .option.incorrect {
+            background-color: #c7051f;
+        }
+
+        .option.correct {
+            background-color: #27ae60;
+        }
+
+        .footer {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress {
+            font-size: 1rem;
+        }
+
+        .start-button {
+            background-color: #925287;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .start-button:hover {
+            background-color: #7e53d4;
+        }
+
+        .results-box {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .coin-image {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .won-coins {
+            font-size: 20px;
+            color: #333;
+        }
+
+        @media (max-width: 600px) {
+            .quiz-title {
+                font-size: 2.5rem;
+            }
+
+            .question {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="coin-counter" style="position: absolute; top: 20px; right: 20px; color: white; font-size: 18px; display: flex; align-items: center;">
+        <img src="coin.png" alt="Coin" style="width: 30px; height: 30px; margin-right: 10px;">
+        <span> <strong>GoalCoins:  </strong></span><span id="coin-count"> 0</span>
+    </div>
+    
+    <div class="quiz-container">
+        <h1 class="quiz-title">Daily Contest</h1>
+        <div id="challenge-box" class="quiz-box">
+            <p><strong>Take up today's challenge and earn GoalCoins to win exciting gifts and offers!</strong></p>
+            <button id="start-button" class="start-button">Siuuuuuuu</button>
+        </div>
+        <div id="quiz-box" class="quiz-box" style="display: none;">
+            <h2 id="question" class="question">1. What does HTML stand for?</h2>
+            <form id="answers" class="answers">
+                <!-- Answer options will be inserted dynamically -->
+            </form>
+            <div class="footer">
+                <span id="progress" class="progress">1 of 5 Questions</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz questions
+        const questions = [
+            {
+                question: "Who is considered the 'Father of Indian Football? ",
+                answers: [
+                    { text: "Syed Abdul Rahim", correct: false },
+                    { text: "Bhaichung Bhutia", correct: false },
+                    { text: "Sunil Chhetri", correct: false },
+                    { text: "Gostha Pal", correct: true }
+                ]
+            },
+            {
+                question: "Which Indian football club has won the most I-League titles?",
+                answers: [
+                    { text: "East Bengal FC", correct: false },
+                    { text: "Mohun Bagan AC", correct: false },
+                    { text: "Dempo SC", correct: true },
+                    { text: "Bengaluru FC", correct: false }
+                ]
+            },
+            {
+                question: "In which year did India qualify for the FIFA World Cup but withdraw?",
+                answers: [
+                    { text: "1950", correct: true },
+                    { text: "1962", correct: false },
+                    { text: "1978", correct: false },
+                    { text: "1986", correct: false }
+                ]
+            },
+            {
+                question: "Which city hosted the 2017 FIFA U-17 World Cup final in India?",
+                answers: [
+                    { text: "Kolkata", correct: false },
+                    { text: "Mumbai", correct: false },
+                    { text: "Kochi", correct: true },
+                    { text: "New Delhi", correct: false }
+                ]
+            },
+            {
+                question: "Who was the first Indian footballer to play professionally in Europe?",
+                answers: [
+                    { text: "Sunil Chhetri", correct: false },
+                    { text: "Bhaichung Bhutia", correct: true },
+                    { text: "Sandesh Jhingan", correct: false },
+                    { text: "Gurpreet Singh Sandhu", correct: false }
+                ]
+            }
+        ];
+    
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let goalCoins = 0; // Initialize total GoalCoins
+        const coinCountElement = document.getElementById('coin-count'); // Get the coin count element
+    
+    
+        const questionElement = document.getElementById('question');
+        const answersElement = document.getElementById('answers');
+        const progressElement = document.getElementById('progress');
+        const startButton = document.getElementById('start-button');
+        const challengeBox = document.getElementById('challenge-box');
+        const quizBox = document.getElementById('quiz-box');
+    
+        startButton.addEventListener('click', () => {
+            challengeBox.style.display = 'none';
+            quizBox.style.display = 'block';
+            showQuestion(currentQuestionIndex);
+        });
+    
+        function showQuestion(questionIndex) {
+            const questionData = questions[questionIndex];
+            questionElement.innerText = questionData.question;
+            answersElement.innerHTML = '';
+    
+            questionData.answers.forEach(answer => {
+                const label = document.createElement('label');
+                label.classList.add('option');
+                label.innerHTML = `<span>${answer.text}</span>`;
+                answersElement.appendChild(label);
+    
+                // Add event listener to each answer
+                label.addEventListener('click', () => {
+                    const selectedLabel = label;
+                    const correctAnswer = questions[currentQuestionIndex].answers.find(a => a.correct);
+    
+                    if (selectedLabel.innerText.includes(correctAnswer.text)) {
+                        selectedLabel.classList.add('correct'); // Highlight correct answer
+                        score++; // Increase score if correct
+                    } else {
+                        selectedLabel.classList.add('incorrect'); // Highlight incorrect answer
+                        // Highlight the correct answer in green
+                        const correctLabel = Array.from(answersElement.children).find(l => l.innerText.includes(correctAnswer.text));
+                        if (correctLabel) {
+                            correctLabel.classList.add('correct');
+                        }
+                    }
+    
+                    // Disable all answers after selection
+                    const allLabels = answersElement.querySelectorAll('label');
+                    allLabels.forEach(l => l.style.pointerEvents = 'none');
+    
+                    // Move to next question automatically after a short delay
+                    setTimeout(() => {
+                        currentQuestionIndex++;
+                        if (currentQuestionIndex < questions.length) {
+                            showQuestion(currentQuestionIndex);
+                        } else {
+                            showResults();
+                        }
+                    }, 1000); // 1-second delay
+                });
+            });
+    
+            progressElement.innerText = `${questionIndex + 1} of ${questions.length} Questions`;
+        }
+    
+        function showResults() {
+            goalCoins += score; // Add earned coins to total GoalCoins
+            coinCountElement.innerText = goalCoins; // Update the displayed coin count
+    
+            quizBox.innerHTML = `  
+                <div class="results-box">
+                    <img src="coin.png" alt="Coin Image" class="coin-image" />
+                    <p class="won-coins">You've won <strong>${score} coins</strong>!</p>
+                </div>
+            `;
+        }
+    </script>
+    
+</body>
+</html>

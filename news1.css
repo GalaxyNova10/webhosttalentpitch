@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Football News</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('images.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: rgb(255, 255, 255);
+            margin-bottom: 20px;
+            background-color: #0c0c0cb7;
+            display: inline-block;
+        }
+
+        input[type="text"] {
+            width: 60%;
+            padding: 15px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.4s ease;
+        }
+
+        input[type="text"]:focus {
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.7);
+            outline: none;
+        }
+
+        .news-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .news-article {
+            background-color: white;
+            width: 300px;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .news-article:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .news-article img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .news-article h2 {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .news-article p {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .news-article a {
+            text-decoration: none;
+            color: #1e90ff;
+            font-weight: bold;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Latest Indian Football News</h1>
+
+        <input type="text" placeholder="Search Indian Football News...">
+
+        <div class="news-container" id="news-container">
+        </div>
+    </div>
+
+    <footer class="footer">
+        © 2024 Indian Football News. All Rights Reserved.
+    </footer>
+
+    <script>
+        const API_KEY = 'c8050fe12a184ebd900971983bfb6fc4';
+        const NEWS_API_URL = `https://newsapi.org/v2/everything?q=Indian%20football&apiKey=${API_KEY}`;
+
+        async function fetchNews() {
+            try {
+                const response = await fetch(NEWS_API_URL);
+                const data = await response.json();
+                displayNews(data.articles);
+            } catch (error) {
+                console.error("Error fetching news:", error);
+            }
+        }
+
+        function displayNews(articles) {
+            const newsContainer = document.getElementById('news-container');
+            newsContainer.innerHTML = ''; 
+
+            articles.forEach(article => {
+                const newsArticle = document.createElement('div');
+                newsArticle.classList.add('news-article');
+
+                const img = document.createElement('img');
+                img.src = article.urlToImage || 'https://via.placeholder.com/300x200';
+                img.alt = article.title;
+
+                const headline = document.createElement('h2');
+                headline.textContent = article.title;
+
+                const description = document.createElement('p');
+                description.textContent = article.description || 'Click below for full details';
+
+                const readMore = document.createElement('a');
+                readMore.href = article.url;
+                readMore.textContent = 'Read More';
+                readMore.target = '_blank';
+
+                newsArticle.appendChild(img);
+                newsArticle.appendChild(headline);
+                newsArticle.appendChild(description);
+                newsArticle.appendChild(readMore);
+
+                newsContainer.appendChild(newsArticle);
+            });
+        }
+
+        window.onload = fetchNews;
+    </script>
+
+</body>
+</html>

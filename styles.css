@@ -1,0 +1,119 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #04006c;
+    color: #fff;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #ff0000; /* Red color for headers */
+}
+
+/* Big Carousel */
+.big-carousel-container {
+    position: relative;
+    width: 1500px; /* Set the width */
+    height: 700px; /* Set the height */
+    margin: 20px auto;
+    overflow: hidden;
+    border: 3px solid red;
+    border-radius: 10px;
+    background-color: black;
+}
+
+.big-carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.big-carousel-slide {
+    min-width: 100%;
+    height: 700px; /* Match the height */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Carousel Navigation Buttons */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #ff0000;
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#big-prev-btn {
+    left: 10px;
+}
+
+#big-next-btn {
+    right: 10px;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+/* 5 Images Section with Prices */
+.five-images-section {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.five-image {
+    width: 250px;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid #ff0000;
+    position: relative;
+}
+
+.five-image p {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+}
+
+/* Categories Section */
+.category-section {
+    margin: 40px 0;
+}
+
+.category-grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.category-item {
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid #ff0000;
+    position: relative;
+}
+
+.category-item p {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+}

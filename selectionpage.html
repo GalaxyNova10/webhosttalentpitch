@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Selection Fairs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('fbg.jpg') no-repeat center center fixed; /* Add your image URL here */
+            background-size: cover;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* Overlay effect to make content more readable over the background */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+            z-index: -1;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .fair-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .fair-item {
+            background-color: #ffffffde;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .fair-item h2 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .fair-item p {
+            margin: 10px 0;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .fair-details {
+            max-width: 70%;
+        }
+
+        .register-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .register-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .fair-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .fair-details {
+                max-width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .register-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Upcoming Selection Fairs</h1>
+
+    <div class="fair-list">
+        <!-- Selection Fair 1 -->
+        <div class="fair-item">
+            <div class="fair-details">
+                <h2>ISL Selection Fair - Mumbai</h2>
+                <p><strong>Date:</strong> 25th October 2024</p>
+                <p><strong>Location:</strong> Mumbai Football Arena</p>
+                <p>The Indian Super League will be conducting its recruitment fair for young aspiring players. Don't miss the chance to showcase your talent!</p>
+            </div>
+            <button class="register-btn">Register Now</button>
+        </div>
+
+        <!-- Selection Fair 2 -->
+        <div class="fair-item">
+            <div class="fair-details">
+                <h2>ISL Selection Fair - Bengaluru</h2>
+                <p><strong>Date:</strong> 28th October 2024</p>
+                <p><strong>Location:</strong> Sree Kanteerava Stadium</p>
+                <p>Showcase your football skills at the ISL selection event in Bengaluru. Register now and secure your spot for the trials.</p>
+            </div>
+            <button class="register-btn">Register Now</button>
+        </div>
+
+        <!-- Selection Fair 3 -->
+        <div class="fair-item">
+            <div class="fair-details">
+                <h2>ISL Selection Fair - Kolkata</h2>
+                <p><strong>Date:</strong> 30th October 2024</p>
+                <p><strong>Location:</strong> Salt Lake Stadium</p>
+                <p>Kolkata, the football capital of India, is hosting the ISL selection fair. Come and demonstrate your football abilities!</p>
+            </div>
+            <button class="register-btn">Register Now</button>
+        </div>
+    </div>
+
+</body>
+</html>

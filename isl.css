@@ -1,0 +1,124 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('images/fbfield.jpg'); /* Replace with the actual path of your image */
+    background-size: cover; /* Ensures the background covers the entire screen */
+    background-position: center; /* Centers the background image */
+    background-attachment: fixed; /* Fixes the background so it doesn't scroll */
+    color: #333;
+    min-height: 100vh; /* Ensures the background covers the full viewport height */
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(to right, #0707079f, #0303037e);
+    color: white;
+}
+
+.header h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.header p {
+    font-size: 18px;
+}
+
+/* Table Section */
+.team-table-section {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.table-container {
+    width: 90%;
+    max-width: 1200px;
+}
+
+.isl-teams-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffffc7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.isl-teams-table thead {
+    background-color: #1b1da77e;
+    color: rgba(255, 255, 255, 0.377);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 18px;
+    position: relative;
+}
+
+.isl-teams-table thead th {
+    color: #f8f8f8;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.isl-teams-table tbody tr {
+    transition: background-color 0.3s ease;
+    color: #f3f0f065;
+}
+
+.isl-teams-table tbody tr:hover {
+    background-color: #f3f0f0;
+}
+
+.isl-teams-table tbody td {
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.2s ease-in-out;
+}
+.isl-teams-table tl {
+    color: #0a0a0a56;
+}
+
+.isl-teams-table tbody tr:hover td {
+    transform: scale(1.05);
+    font-weight: bold;
+}
+
+.isl-teams-table td:first-child {
+    font-weight: bold;
+    color: #1a1969;
+}
+
+.isl-teams-table td:last-child {
+    color: #555;
+}
+
+.isl-teams-table td:last-child:hover {
+    color: #1e1e1f;
+    cursor: pointer;
+}
+
+/* Animation for table */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

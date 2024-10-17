@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalentPitch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background-color: #00000070; /* Solid black */
+            padding: 15px 0; /* Increase padding to make the navbar bigger */
+        }
+
+        .navbar-menu {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .navbar-menu li {
+            position: relative;
+        }
+
+        .navbar-menu a {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 15px 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-menu a:hover {
+            background-color: #0c0d5a9c;
+            border-radius: 5px;
+        }
+
+        .navbar-menu .login-btn, .navbar-menu .signup-btn {
+            border-radius: 5px;
+            padding: 10px 20px;
+        }
+
+        .navbar-menu .login-btn {
+            background-color: #ff3b30;
+        }
+
+        .navbar-menu .login-btn:hover {
+            background-color: #ff6e60;
+        }
+
+        .navbar-menu .signup-btn {
+            background-color: #007bff; /* Blue color */
+            margin-left: 10px; /* Spacing between login and sign up */
+        }
+
+        .navbar-menu .signup-btn:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Dropdown styling */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f0f0f0; /* Light grey */
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(206, 112, 112, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ccc;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #0c0d5a9c;
+        }
+
+        /* Body styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            background: url('images.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        /* Logo container */
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Increased height to push the logo down */
+        }
+
+        .center-logo {
+            max-width: 700px;
+            height: auto;
+            opacity: 0.9; /* Slight transparency */
+            margin-top: 50px;
+            margin-left: -50px; /* Adjust to move left */
+        }
+
+        /* Video container */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 80vh; /* Pushes the video down, requiring scroll */
+        }
+
+        /* Footer styling */
+        footer {
+            width: 100%;
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 768px) {
+            .logo-container {
+                height: 40vh;
+            }
+
+            .center-logo {
+                max-width: 150px;
+            }
+
+            .video-container {
+                margin-top: 60vh;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Header with Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <ul class="navbar-menu">
+                <li><a href="home.html">Home</a></li>
+
+                <li><a href="news1.html">Latest</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">ISL Recruitments &#9660;</a>
+                    <div class="dropdown-content">
+                        <a href="selectionpage.html">Upcoming Selections</a>
+                        <a href="isl.html">Teams</a>
+                    </div>
+                </li>
+
+                <li><a href="signup.html">Join our Club</a></li>
+
+                <li><a href="quiz.html">Daily Contest</a></li>
+
+                <li><a href="index.html">Merchandise</a></li>
+                <li><a href="#">Premium</a></li>
+
+                <!-- Log in and Sign Up buttons -->
+                <li><a href="http://127.0.0.1:5500/views/login.html" class="login-btn">Log in</a></li>
+                <li><a href="http://127.0.0.1:5500/views/signup.html" class="signup-btn">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Container for the centered logo -->
+    <div class="logo-container">
+        <img src="logo.png" alt="Website Logo" class="center-logo">
+    </div>
+
+
+    <script src="js/quiz.js"></script>
+
+</body>
+</html>
